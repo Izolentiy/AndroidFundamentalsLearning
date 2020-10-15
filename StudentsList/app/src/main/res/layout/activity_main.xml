@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_main__rvlist"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_main__add_student"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/activity_main__add_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@android:drawable/ic_input_add"
+        android:drawableTint="@color/colorBlack"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_main__header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main__rvlist"
+        tools:text="Добавить" />
+
+    <TextView
+        android:id="@+id/activity_main__header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:layout_margin="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main__add_student"
+        app:layout_constraintBottom_toTopOf="@+id/activity_main__photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Студент" />
+
+    <ImageView
+        android:id="@+id/activity_main__photo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main__header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/activity_main__fname"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@drawable/male_3" />
+
+    <TextView
+        android:id="@+id/activity_main__fname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@+id/activity_main__photo"
+        app:layout_constraintStart_toEndOf="@+id/activity_main__photo"
+        app:layout_constraintBottom_toTopOf="@+id/activity_main__lname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        tools:text="Имя" />
+
+    <TextView
+        android:id="@+id/activity_main__lname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main__fname"
+        app:layout_constraintStart_toStartOf="@+id/activity_main__fname"
+        app:layout_constraintBottom_toTopOf="@+id/activity_main__ismale"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Фамилия" />
+
+    <CheckBox
+        android:id="@+id/activity_main__ismale"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main__lname"
+        app:layout_constraintStart_toStartOf="@+id/activity_main__lname"
+        app:layout_constraintBottom_toTopOf="@+id/activity_main__deletebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:checked="false"
+        tools:text="Мужской пол" />
+
+    <Button
+        android:id="@+id/activity_main__deletebtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main__ismale"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/activity_main__fname"
+        app:layout_constraintEnd_toStartOf="@+id/activity_main__savebtn"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        tools:text="Удалить" />
+
+    <Button
+        android:id="@+id/activity_main__savebtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toTopOf="@+id/activity_main__deletebtn"
+        app:layout_constraintStart_toEndOf="@+id/activity_main__deletebtn"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_main__deletebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Сохранить" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

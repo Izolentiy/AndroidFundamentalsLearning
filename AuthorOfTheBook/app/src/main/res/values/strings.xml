@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Author Of The Book</string>
+    <string name="instructions">Type any piece of name or text from book</string>
+    <string name="hint_label">Mechatronics</string>
+    <string name="search_button">Search books</string>
+    <string name="no_results">No results found</string>
+    <string name="loading_label">Loading...</string>
+    <string name="no_search_term">No search query</string>
+    <string name="no_network">No network</string>
+</resources>

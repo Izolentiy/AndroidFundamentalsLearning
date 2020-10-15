@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tab Experiment</string>
+
+    <string name="tab1_text">These are the top stories</string>
+    <string name="tab2_text">Tech news you can use</string>
+    <string name="tab3_text">Cooking tips</string>
+
+    <string name="tab1_label">Top stories</string>
+    <string name="tab2_label">Tech news</string>
+    <string name="tab3_label">Cooking</string>
+</resources>

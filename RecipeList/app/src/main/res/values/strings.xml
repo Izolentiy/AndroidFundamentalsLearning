@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Recipe List</string>
+
+    <string name="fried_eggs_name">Fried eggs</string>
+    <string name="fried_eggs_description">Fried eggs is a very simple, fast to cook and tasty meal.</string>
+
+    <string name="mashed_potato_name">Mashed potato</string>
+    <string name="mashed_potato_description">This meal is delicious choice if you have a special diet.</string>
+
+    <string name="borsch_name">Borsch</string>
+    <string name="borsch_description">It is a kind of soup made with beetroot, cabbage, and potatoes</string>
+</resources>

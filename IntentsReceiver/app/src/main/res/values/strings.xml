@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Intents Receiver</string>
+    <string name="text_uri_message">There will be you URI</string>
+    <string name="uri_label">URI: &#032;</string>
+</resources>
