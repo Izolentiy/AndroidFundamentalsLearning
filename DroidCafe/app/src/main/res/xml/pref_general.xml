@@ -48,4 +48,10 @@
         android:title="@string/pref_title_add_friends_to_messages"
         app:useSimpleSummaryProvider="true"/>
 
+    <Preference
+        android:fragment="org.izolentiy.droidcafeinput.SettingsActivity$RootFragment"
+        android:key="root_pref"
+        android:title="Root preferences"
+        android:summary="Click me to show another screen" />
+
 </PreferenceScreen>
