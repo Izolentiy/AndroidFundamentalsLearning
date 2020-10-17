@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RoomWordsSample</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Add new words fragment -->
+    <string name="dialog_title">New word</string>
+    <string name="hint_word">Enter new word.</string>
+    <string name="save_button">Save</string>
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
+</resources>
