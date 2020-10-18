@@ -17,6 +17,8 @@ public class WordRepository {
         mAllWords = mWordDao.getAllWords();
     }
 
+    // Methods for data manipulations
+
     LiveData<List<Word>> getAllWords() {
         return mAllWords;
     }
@@ -32,6 +34,12 @@ public class WordRepository {
     void deleteAll() {
         new DeleteAllWordsAsyncTask(mWordDao).execute();
     }
+
+    void update(Word word) {
+        new UpdateWordAsyncTask(mWordDao).execute(word);
+    }
+
+    // AsyncTask Implementations
 
     private static class InsertAsyncTask extends AsyncTask<Word, Void, Void> {
         private WordDao mAsyncTaskDao;
@@ -75,4 +83,19 @@ public class WordRepository {
         }
 
     }
+
+    private static class UpdateWordAsyncTask extends AsyncTask<Word, Void, Void> {
+        private WordDao mAsyncTaskDao;
+
+        UpdateWordAsyncTask(WordDao dao){
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Word... words) {
+            mAsyncTaskDao.update(words[0]);
+            return null;
+        }
+    }
+
 }

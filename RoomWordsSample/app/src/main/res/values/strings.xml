@@ -6,8 +6,9 @@
     <string name="action_delete_all">Clear data</string>
 
     <!-- Add new words fragment -->
-    <string name="dialog_title">New word</string>
+    <string name="new_word">New word</string>
     <string name="hint_word">Enter new word.</string>
     <string name="save_button">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="update_word">Update word</string>
 </resources>

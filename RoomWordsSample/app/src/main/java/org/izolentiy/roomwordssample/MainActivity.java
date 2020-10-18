@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -77,6 +78,20 @@ public class MainActivity extends AppCompatActivity
             }
         });
         helper.attachToRecyclerView(recyclerView);
+
+        adapter.setOnItemClickListener(new WordListAdapter.ClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Word word = adapter.getWordAtPosition(position);
+                Bundle args = new Bundle();
+                args.putString("WORD_KEY", word.getWord());
+                args.putInt("ID_KEY", word.getId());
+                DialogFragment dialog = new NewWordDialog();
+                dialog.setArguments(args);
+                Log.d("DEBUG_TAG", "adapter.setOnClickListener");
+                dialog.show(getSupportFragmentManager(), "NewWordDialog");
+            }
+        });
     }
 
     @Override
@@ -103,12 +118,21 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onDialogPositiveClick(NewWordDialog dialog) {
-        // User clicked on dialog's "Save" button
-        Word word = new Word(dialog.getWord());
-        if(word.getWord().length() == 0)
+        // Extract data from dialog's arguments
+        Bundle args = dialog.getArguments();
+        String word_data = args.getString("WORD_KEY", "lol");
+        int id = args.getInt("ID_KEY", -1);
+
+        Word word = new Word(word_data);
+        if(word_data.length() == 0)
             Toast.makeText(this, R.string.empty_not_saved, Toast.LENGTH_SHORT).show();
         else
-//            Toast.makeText(this, word.getWord(), Toast.LENGTH_SHORT).show();
-            mWordViewModel.insert(word);
+            if (id != -1) {
+                Log.d("DEBUG_TAG", "update: " + word.getWord());
+                mWordViewModel.update(new Word(word_data, id));
+            } else {
+                Log.d("DEBUG_TAG", "insert: " + word.getWord());
+                mWordViewModel.insert(word);
+            }
     }
 }
