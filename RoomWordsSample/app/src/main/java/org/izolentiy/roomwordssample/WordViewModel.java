@@ -22,8 +22,15 @@ public class WordViewModel extends AndroidViewModel {
         return mAllWords;
     }
 
-    // Note it is not public, maybe it'll cause a problems
-    public void insert(Word word) {
+    void insert(Word word) {
         mRepository.insert(word);
+    }
+
+    void delete(Word word) {
+        mRepository.delete(word);
+    }
+
+    void deleteAll() {
+        mRepository.deleteAll();
     }
 }

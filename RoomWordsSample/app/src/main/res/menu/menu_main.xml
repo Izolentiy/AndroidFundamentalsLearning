@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="org.izolentiy.roomwordssample.MainActivity">
     <item
+        android:id="@+id/action_deleteAll"
+        android:orderInCategory="50"
+        android:title="@string/action_delete_all"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
