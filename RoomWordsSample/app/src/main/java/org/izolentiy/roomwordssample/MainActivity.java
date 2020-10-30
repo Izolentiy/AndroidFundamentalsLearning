@@ -125,7 +125,8 @@ public class MainActivity extends AppCompatActivity
 
         Word word = new Word(word_data);
         if(word_data.length() == 0)
-            Toast.makeText(this, R.string.empty_not_saved, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.empty_not_saved,
+                    Toast.LENGTH_SHORT).show();
         else
             if (id != -1) {
                 Log.d("DEBUG_TAG", "update: " + word.getWord());
