@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.izolentiy.citiescam.model.City;
+import org.izolentiy.citiescam.network.DownloadImageTask;
 
 /**
  * Экран, показывающий веб-камеру одного выбранного города.
@@ -44,7 +45,7 @@ public class CityCamActivity extends AppCompatActivity {
 
         progressView.setVisibility(View.VISIBLE);
 
-
+        new DownloadImageTask(city.latitude, city.longitude).execute();
 
         // Здесь должен быть код, инициирующий асинхронную загрузку изображения с веб-камеры
         // в выбранном городе.
