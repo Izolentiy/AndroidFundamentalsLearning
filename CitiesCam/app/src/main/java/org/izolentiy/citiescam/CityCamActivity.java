@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +34,7 @@ public class CityCamActivity extends AppCompatActivity
     private DownloadImageTask downloadImageTask;
     private ImageView camImageView;
     private ProgressBar progressView;
+    private TextView camTitleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,10 @@ public class CityCamActivity extends AppCompatActivity
         setContentView(R.layout.activity_city_cam);
         camImageView = (ImageView) findViewById(R.id.cam_image);
         progressView = (ProgressBar) findViewById(R.id.progress);
+        camTitleView = (TextView) findViewById(R.id.cam_title);
+
+        // Show progress view
+        progressView.setVisibility(View.VISIBLE);
 
         // Set up the name of the city in to an action bar
         getSupportActionBar().setTitle(city.name);
@@ -71,23 +77,31 @@ public class CityCamActivity extends AppCompatActivity
             while (i < webCamsArray.length() && (imageUrl == null && title == null)) {
                 // Get the current item information.
                 JSONObject webCam = webCamsArray.getJSONObject(i);
+
+                // Get the title of the camera
                 title = webCam.getString("title");
+                // Extract an image url from image json object
                 JSONObject image = webCam.getJSONObject("image");
                 imageUrl = image.getJSONObject("current").getString("preview");
-                Log.d("JSON_TAG", title +": "+ imageUrl);
+
+                Log.d(JSON_TAG, title +": "+ imageUrl);
                 i++;
             }
         } catch (JSONException e) {
-            Log.d("JSON_TAG", e.toString());
+            Log.d(JSON_TAG, e.toString());
         }
-        // Put an camera image in to view
-        // (but it looks like I exceeded the daily number of api requests)
-        /* Glide.with(this).load(imageUrl).into(camImageView); */
 
-        // URL of image with really beautiful girl
-        String url = "https://images.unsplash.com/photo-1591927076671-71214f64e1a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80";
-        Glide.with(this).load(url).into(camImageView);
-        progressView.setVisibility(View.GONE);
+        // Check if there is result
+        if (title == null || imageUrl == null) {
+            title = "No camera found";
+        } else {
+            // Put the camera image in to view
+            Glide.with(this).load(imageUrl)
+                    .placeholder(R.drawable.camera_placeholder)
+                    .into(camImageView);
+        }
+        camTitleView.setText(title);  // Put the title text in to view
+        progressView.setVisibility(View.GONE);  // Hide the progressBar
     }
 
     @Override
@@ -99,5 +113,6 @@ public class CityCamActivity extends AppCompatActivity
         super.onDestroy();
     }
 
+    private static final String JSON_TAG = "JSON_TAG";
     private static final String TAG = "CityCam";
 }

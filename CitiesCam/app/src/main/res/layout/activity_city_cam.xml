@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin"
-    android:background="#fff">
+    android:layout_height="match_parent">
 
     <FrameLayout
+        android:id="@+id/image_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
         <ImageView
             android:id="@+id/cam_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            android:background="#999"/>
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            tools:src="@drawable/camera_placeholder"/>
 
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            style="@android:style/Widget.Holo.Light.ProgressBar.Large.Inverse"/>
+            android:visibility="visible"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar"/>
+
     </FrameLayout>
 
-    <!-- Добавьте сюда еще View с информацией о выбранном городе и показанной веб-камеры -->
+    <TextView
+        android:id="@+id/cam_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_layout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        tools:text="Camera Title" />
 
 </RelativeLayout>
