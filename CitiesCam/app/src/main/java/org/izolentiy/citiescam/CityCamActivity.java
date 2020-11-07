@@ -12,10 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 
 import org.izolentiy.citiescam.model.City;
+import org.izolentiy.citiescam.model.WebCam;
 import org.izolentiy.citiescam.network.DownloadImageTask;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 /**
  * Экран, показывающий веб-камеру одного выбранного города.
@@ -31,6 +34,7 @@ public class CityCamActivity extends AppCompatActivity
     private static final double RADIUS = 50;
 
     private City city;
+    private List<WebCam> webCamList;
     private DownloadImageTask downloadImageTask;
     private ImageView camImageView;
     private ProgressBar progressView;
@@ -97,7 +101,6 @@ public class CityCamActivity extends AppCompatActivity
         } else {
             // Put the camera image in to view
             Glide.with(this).load(imageUrl)
-                    .placeholder(R.drawable.camera_placeholder)
                     .into(camImageView);
         }
         camTitleView.setText(title);  // Put the title text in to view
