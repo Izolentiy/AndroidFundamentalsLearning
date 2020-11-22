@@ -10,7 +10,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 
+import org.izolentiy.citiescam.gson.jsonresponse.JsonResponse;
 import org.izolentiy.citiescam.model.City;
 import org.izolentiy.citiescam.model.WebCam;
 import org.izolentiy.citiescam.network.DownloadImageTask;
@@ -72,6 +76,10 @@ public class CityCamActivity extends AppCompatActivity
         String imageUrl = null;
         String title = null;
         try {
+            Gson gson = new Gson();
+            JsonResponse response = gson.fromJson(jsonString, JsonResponse.class);
+            Log.d(JSON_TAG, String.valueOf(response.getResult().getLimit()));
+
             JSONObject jsonObject = new JSONObject(jsonString);
             JSONArray webCamsArray = jsonObject
                     .getJSONObject("result").getJSONArray("webcams");
@@ -91,7 +99,7 @@ public class CityCamActivity extends AppCompatActivity
                 Log.d(JSON_TAG, title +": "+ imageUrl);
                 i++;
             }
-        } catch (JSONException e) {
+        } catch (JsonParseException | JSONException e) {
             Log.d(JSON_TAG, e.toString());
         }
 
@@ -101,6 +109,8 @@ public class CityCamActivity extends AppCompatActivity
         } else {
             // Put the camera image in to view
             Glide.with(this).load(imageUrl)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .onlyRetrieveFromCache(false)
                     .into(camImageView);
         }
         camTitleView.setText(title);  // Put the title text in to view
