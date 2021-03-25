@@ -3,8 +3,9 @@ package org.izolentiy.citiescam.webcams;
 import android.net.Uri;
 import android.util.Log;
 
+import org.izolentiy.citiescam.BuildConfig;
+
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Locale;
 
 /**
@@ -16,7 +17,7 @@ public final class Webcams {
     private static final String PATH_PARAM = "/api/webcams/v2/list/nearby=%f,%f,%f";
 
     private static final String PARAM_KEY = "key";
-    private static final String API_KEY = BuildConfig.apiKey;
+    private static final String API_KEY = BuildConfig.API_KEY;
 
     private static final String PARAM_SHOW = "show";
     private static final String SHOW_ARGS = "webcams:image";
